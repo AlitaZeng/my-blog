@@ -1,0 +1,6 @@
+1,如何实现一个new
+function _new(fn, ...arg) {
+    const obj = Object.create(fn.prototype); // 创建一个新对象，指向fn的prototype
+    const ret = fn.apply(obj, arg); // 改变this的指向
+    return ret instanceof Object ? ret : obj; // 返回新对象
+}
